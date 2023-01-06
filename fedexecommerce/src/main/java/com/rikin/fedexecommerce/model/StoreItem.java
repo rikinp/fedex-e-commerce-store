@@ -6,14 +6,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class StoreItems {
+public class StoreItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private int quantity;
+    private int price;
+    private String imageUrl;
 
-    public StoreItems() {
+    public StoreItem() {
     }
 
     public int getId() {
@@ -32,11 +33,19 @@ public class StoreItems {
         this.name = name;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getPrice() {
+        return price;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
