@@ -1,8 +1,34 @@
+import { useEffect, useState } from "react"
 import { Col, Row } from "react-bootstrap"
 import { StoreItem } from "../components/StoreItem"
-import storeItems from "../data/items.json"
+
+type resultProps = {
+  id: number
+  imageUrl: string
+  name: string
+  price: number
+}
 
 export function Store() {
+    const[storeItems,setStoreItems] = useState<resultProps[]>([]);
+
+    const api = async () => {
+      const response = await fetch("http://localhost:8080/estore/getAll", {
+        method: "GET",
+        headers: { 
+          accept: "application/json",
+        },
+      });
+      const jsonData = await response.json();
+      setStoreItems(jsonData);
+    }
+    
+    useEffect(() => {
+      api();
+    }, []);
+
+    console.log(storeItems);
+
     return (
         <>
           <h1>Store</h1>

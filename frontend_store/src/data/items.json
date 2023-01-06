@@ -1,24 +1,24 @@
 [
     {
-      "id": 1,
+      "id": 28947,
       "name": "Book",
       "price": 10.99,
       "imgUrl": "/imgs/book.jpg"
     },
     {
-      "id": 2,
+      "id": 39839,
       "name": "Computer",
       "price": 1199,
-      "imgUrl": "/imgs/computer.jpg"
+      "imgUrl": "https://cdn.britannica.com/77/170477-050-1C747EE3/Laptop-computer.jpg"
     },
     {
-      "id": 3,
+      "id": 61556,
       "name": "Banana",
       "price": 1.05,
       "imgUrl": "/imgs/banana.jpg"
     },
     {
-      "id": 4,
+      "id": 55434,
       "name": "Car",
       "price": 14000,
       "imgUrl": "/imgs/car.jpg"

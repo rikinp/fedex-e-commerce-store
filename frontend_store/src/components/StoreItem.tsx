@@ -4,12 +4,12 @@ import { formatCurrency } from "../utilities/formatCurrency"
 
 type StoreItemProps = {
   id: number
+  imageUrl: string
   name: string
   price: number
-  imgUrl: string
 }
 
-export function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
+export function StoreItem({ id, name, price, imageUrl }: StoreItemProps) {
   const {
     getItemQuantity,
     increaseCartQuantity,
@@ -22,7 +22,7 @@ export function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
     <Card className="h-100">
       <Card.Img
         variant="top"
-        src={imgUrl}
+        src={imageUrl}
         height="200px"
         style={{ objectFit: "cover" }}
       />

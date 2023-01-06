@@ -1,14 +1,40 @@
+import { useEffect, useState } from "react";
 import { Button, Stack } from "react-bootstrap"
 import { useShoppingCart } from "../context/ShoppingCartContext"
-import storeItems from "../data/items.json"
+//import storeItems from "../data/items.json"
 import { formatCurrency } from "../utilities/formatCurrency"
+
+type resultProps = {
+  id: number
+  imageUrl: string
+  name: string
+  price: number
+}
 
 type CartItemProps = {
   id: number
   quantity: number
-}
+  }
 
 export function CartItem({ id, quantity }: CartItemProps) {
+
+  const[storeItems,setStoreItems] = useState<resultProps[]>([]);
+
+  const api = async () => {
+    const response = await fetch("http://localhost:8080/estore/getAll", {
+      method: "GET",
+      headers: { 
+        accept: "application/json",
+      },
+    });
+    const jsonData = await response.json();
+    setStoreItems(jsonData);
+  }
+  
+  useEffect(() => {
+    api();
+  }, []);
+
   const { removeFromCart } = useShoppingCart()
   const item = storeItems.find(i => i.id === id)
   if (item == null) return null
@@ -21,7 +47,7 @@ export function CartItem({ id, quantity }: CartItemProps) {
   return (
     <Stack direction="horizontal" gap={2} className="d-flex align-items-center">
       <img
-        src={item.imgUrl}
+        src={item.imageUrl}
         style={{ width: "100px", height: "60px", objectFit: "cover" }}
       />
       <div className="me-auto">
