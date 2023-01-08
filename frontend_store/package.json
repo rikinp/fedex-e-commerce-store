@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && xcopy .\\dist\\* ..\\fedexecommerce\\src\\main\\resources\\public\\ /s /y",
+    "build": "tsc && vite build && xcopy .\\dist\\* ..\\src\\main\\resources\\public\\ /s /y",
     "preview": "vite preview"
   },
   "dependencies": {
