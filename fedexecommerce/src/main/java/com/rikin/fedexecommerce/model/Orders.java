@@ -13,6 +13,11 @@ public class Orders {
     private int totalPrice;
 
 
+    public Orders(int id, int totalPrice) {
+        this.id = id;
+        this.totalPrice = totalPrice;
+    }
+
     public Orders() {
     }
 
