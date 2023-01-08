@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button, Stack } from "react-bootstrap"
 import { useShoppingCart } from "../context/ShoppingCartContext"
-//import storeItems from "../data/items.json"
 import { formatCurrency } from "../utilities/formatCurrency"
 
 type resultProps = {
@@ -21,7 +20,7 @@ export function CartItem({ id, quantity }: CartItemProps) {
   const[storeItems,setStoreItems] = useState<resultProps[]>([]);
 
   const api = async () => {
-    const response = await fetch("http://localhost:8080/estore/getAll", {
+    const response = await fetch("/estore/getAll", {
       method: "GET",
       headers: { 
         accept: "application/json",

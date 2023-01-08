@@ -13,7 +13,7 @@ export function Store() {
     const[storeItems,setStoreItems] = useState<resultProps[]>([]);
 
     const api = async () => {
-      const response = await fetch("http://localhost:8080/estore/getAll", {
+      const response = await fetch("/estore/getAll", {
         method: "GET",
         headers: { 
           accept: "application/json",
@@ -31,7 +31,7 @@ export function Store() {
 
     return (
         <>
-          <h1>Store</h1>
+          <h1 className="text-light">Store</h1>
           <Row md={2} xs={1} lg={3} className="g-3">
             {storeItems.map(item => (
               <Col key={item.id}>
