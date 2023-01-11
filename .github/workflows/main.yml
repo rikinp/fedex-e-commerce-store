@@ -4,7 +4,7 @@ env:
   EB_APPLICATION_NAME:  "fedexstore"
   EB_ENVIRONMENT_NAME: "fedexstore-env"
   DEPLOY_PACKAGE_NAME: "fedexstore-app-${{ github.sha }}.zip"
-  AWS_REGION_NAME: "us-east-2"
+  AWS_REGION_NAME: "ca-central-1"
 
 on:
   push:
