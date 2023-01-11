@@ -1,0 +1,35 @@
+name: cicd-pipeline
+env:
+  EB_PACKAGE_S3_BUCKET_NAME : "fedexstore"
+  EB_APPLICATION_NAME:  "fedexstore"
+  EB_ENVIRONMENT_NAME: "fedexstore-env"
+  DEPLOY_PACKAGE_NAME: "fedexstore-app-${{ github.sha }}.zip"
+  AWS_REGION_NAME: "us-east-2"
+
+on:
+  push:
+    branches:
+      - main
+      
+jobs:
+  ci_pipeline:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Git clone repo
+        uses: actions/checkout@v1
+        
+      - name: Create ZIP Deployment package
+        run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
+        
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with: 
+          aws-access-key-id : ${{ secrets.MY_AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.MY_AWS_SECRET_KEY }}
+          aws-region : ${{ env.AWS_REGION_NAME }}
+          
+      - name: Copy deployment package to S3
+        run: aws s3 cp ${{ env.DEPLOY_PACKAGE_NAME }} s3://${{ env.EB_PACKAGE_S3_BUCKET_NAME }}/
+      
+  
