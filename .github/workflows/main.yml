@@ -1,7 +1,7 @@
 name: cicd-pipeline
 env:
   EB_PACKAGE_S3_BUCKET_NAME : "fedexstore"
-  EB_APPLICATION_NAME:  "Fedexstore"
+  EB_APPLICATION_NAME:  "fedexstore"
   EB_ENVIRONMENT_NAME: "Fedexstore-env"
   DEPLOY_PACKAGE_NAME: "fedexstore-app-${{ github.sha }}.zip"
   AWS_REGION_NAME: "ca-central-1"
